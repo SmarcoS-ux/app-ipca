@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    background-image: url("../public/assets/background1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.App .container-main h1 {
+    color: #fff;
+}
+
+.App .container-main .container-dados {
+    height: 60px;
+}
+
+.App .container-main .container-dados .view-value {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: calc(100% - 160px);
+    height: 60px;
+}
+.App .container-main .container-dados .view-value label {
+    font-weight: 600;
+    color: #fff;
+}
+.App .container-main .container-dados .view-value input {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(129, 129, 129);
+    padding-left: 10px;
+    margin-left: 10px;
+    background-color: aliceblue;
+    box-shadow: 1px 1px 5px #fff;
+    font-weight: 600;
+    font-size: 15px;
+}   
+.App .container-main .container-dados .view-value #inp-percentual {
+    width: 80px;
+}
+
+.App .container-main .container-dados #btn-history {
+    margin-top: 20px;
+    height: 40px;
+    width: 160px;
+    border-radius: 5px;
+    border: 1px solid green;
+    background-color: rgb(55, 150, 55);
+    color: #fff;
+    font-weight: 600;
+}
+.App .container-main .container-dados #btn-history:hover {
+    cursor: pointer;
+    background-color: rgb(43, 116, 43);
+}
+.App .container-main .container-dados {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+
+.App .container-main #form-values {
+    width: 786px;
+    background-color: rgb(243, 243, 243);
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.App .container-main #form-values {
+    display: flex;
+    flex-direction: row;
+}
+
+.App .container-main #form-values #btn-submit {
+    background-color: transparent;
+    border: 1px solid rgb(99, 99, 99);
+    outline: none;
+    border-radius: 5px;
+    width: 60px;
+
+}
+.App .container-main #form-values #btn-submit:hover {
+    box-shadow: 2px 2px 6px rgb(121, 121, 121);
+    cursor: pointer;
+}
+
+.App .container-main #form-values #btn-submit img {
+    width: 25px;
+    height: 25px;
+}
+
+.App .container-main #form-values label {
+    font-size: 14px;
+}
+
+.App .container-main #form-values input {
+    height: 30px;
+    border: 1px solid rgb(153, 153, 153);
+    border-radius: 5px;
+    padding-left: 8px;
+}
+.App .container-main #form-values input:focus {
+    outline: none;
+    box-shadow: 2px 2px 5px rgb(143, 143, 143);
+}
+
+
+
+thead, tbody {
+    display: block;
+}
+tbody {
+    overflow-y: scroll;
+    max-height: 380px;
+}
+table, th, td {
+    border-collapse: collapse;
+}
+td {
+    border: 1px solid rgb(126, 126, 126);
+}
+
+.App .container-table {
+    background-color: antiquewhite;
+    width: 785px;
+    border-radius: 10px;
+    height: 440px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.App .container-table #table-historical {
+    width: 785px;
+    margin-top: 20px;
+    background-color: rgb(204, 255, 212);
+    height: calc(100% - 40px);
+}
+
+.App .container-table #table-historical caption {
+    padding: 3px 0 0 0;
+    font-weight: 600;
+    border: 1px solid black;
+}
+.App .container-table #table-historical .message {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    color: #838383;
+}
+
+thead {
+    background-color: rgb(209, 209, 209);
+}
+thead tr #mes, .tdmes {
+    width: 60%;
+}
+#mes {
+    border-left: 1px solid rgb(126, 126, 126);
+    border-right: 1px solid rgb(126, 126, 126);
+}
+#mes:hover {
+    cursor: pointer;
+}
+.tdmes {
+    padding-left: 10px;
+}
+
+thead tr #ano, .tdano {
+    width: 149px;
+}
+#ano {
+    border-right: 1px solid rgb(126, 126, 126);
+}
+#ano:hover {
+    cursor: pointer;
+}
+.tdano {
+    text-align: center;
+}
+
+thead tr #ipca, .tdipca {
+    width: 150px;
+}
+#ipca {
+    border-right: 1px solid rgb(126, 126, 126);
+}
+#ipca:hover {
+    cursor: pointer;
+}
+.tdipca {
+    text-align: center;
+}

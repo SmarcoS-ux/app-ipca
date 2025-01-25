@@ -18,7 +18,7 @@ function App() {
 
     const buscarHistorico = async () => {
         try {
-            const connection = await fetch("http://localhost:4000/historico", {
+            const connection = await fetch("http://api-ipca.exaltaicifra.com.br/historico", {
                 credentials: "include"
             });
 

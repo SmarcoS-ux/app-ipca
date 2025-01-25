@@ -41,7 +41,7 @@ function App() {
             let mesAnoFinal = $("#mes-final").val();
             let valor = $("#valor").val();
 
-            const connection = await fetch(`http://localhost:4000/calcularCorrecao?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
+            const connection = await fetch(`http://api-ipca.exaltaicifra.com.br?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
                 credentials: "include"
             });
 

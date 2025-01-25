@@ -111,6 +111,9 @@ function App() {
             case 12:
                 mesPorExtenso = "Dezembro";
                 break;
+
+            default:
+                return "error";
         }
 
         return mesPorExtenso;

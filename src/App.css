@@ -8,14 +8,25 @@
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
-    background-image: url("../public/assets/background1.jpg");
+    background-image: url("../public/assets/background4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     width: 100%;
 }
+.background {
+    background: linear-gradient(black, rgba(0,0,0,0));
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
+.App .container-main {
+    z-index: 1;
+}
 .App .container-main h1 {
     color: #fff;
 }
@@ -142,6 +153,7 @@ td {
     height: 440px;
     margin-top: 20px;
     padding: 20px;
+    z-index: 1;
 }
 
 .App .container-table #table-historical {

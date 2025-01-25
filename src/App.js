@@ -245,6 +245,7 @@ function App() {
 
     return (
         <div className="App">
+            <div className='background'></div>
             <div className="container-main">
                 <h1>Históricos e Cálculo do IPCA</h1>
                 <form 

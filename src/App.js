@@ -247,7 +247,7 @@ function App() {
         <div className="App">
             <div className='background'></div>
             <div className="container-main">
-                <h1>Históricos e Cálculo do IPCA</h1>
+                <h1>Histórico e Cálculo do IPCA</h1>
                 <form 
                     id="form-values" 
                     onSubmit={(e) => e.preventDefault()}>

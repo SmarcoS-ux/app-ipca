@@ -18,7 +18,7 @@ function App() {
 
     const buscarHistorico = async () => {
         try {
-            const connection = await fetch("http://api-ipca.exaltaicifra.com.br/historico", {
+            const connection = await fetch("https://api-ipca2.onrender.com/historico", {
                 credentials: "include"
             });
 
@@ -41,7 +41,7 @@ function App() {
             let mesAnoFinal = $("#mes-final").val();
             let valor = $("#valor").val();
 
-            const connection = await fetch(`http://api-ipca.exaltaicifra.com.br?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
+            const connection = await fetch(`https://api-ipca2.onrender.com?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
                 credentials: "include"
             });
 

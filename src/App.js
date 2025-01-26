@@ -16,7 +16,16 @@ function App() {
     const[dataFim, setDataFim] = useState("");
     const[valor, setValor] = useState();
 
+    const icoSuccess = "/assets/sucesso.png";
+    const icoError = "/assets/erro.png";
+    const[styleMessage, setStyleMessage] = useState("container-message-hidden");
+    const[message, setMessage] = useState("");
+    const[icoMessage, setIcoMessage] = useState();
+
+    const[isLoading, setIsLoading] = useState(false);
+
     const buscarHistorico = async () => {
+        setIsLoading(true);
         try {
             const connection = await fetch("https://api-ipca2.onrender.com/historico", {
                 credentials: "include"
@@ -24,39 +33,72 @@ function App() {
 
             if(connection.ok){
                 const response = await connection.json();
+                setIsLoading(false);
                 setHistorico(response);
                 setHistoricoCopy(response);
 
             } else{
                 console.log(connection.status);
+                setIsLoading(false);
             }
         } catch{
             console.log("Erro na conexão.");
+            setIsLoading(false);
         }
     }
 
     const calcularCorrecao = async () => {
+        setIsLoading(true);
         try {
             let mesAnoInicial = $("#mes-inicial").val();
             let mesAnoFinal = $("#mes-final").val();
             let valor = $("#valor").val();
 
-            const connection = await fetch(`https://api-ipca2.onrender.com/calcularCorrecao?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
-                credentials: "include"
-            });
+            const[mesInicio, anoInicio] = mesAnoInicial.split("/").map(Number);
+            const[mesFim, anoFim] = mesAnoFinal.split("/").map(Number);
 
-            if(connection.ok){
-                let response = await connection.json();
-                setValorCorrigido(new Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "BRL"
-                }).format(response.valorCorrigido));
+            const indiceInicio = anoInicio * 12 + mesInicio;
+            const indiceFim = anoFim * 12 + mesFim;
 
-                setPercentual(response.percentualIntervalo);                     
+            if(indiceFim < indiceInicio){
+                setIsLoading(false);
+                setIcoMessage(icoError);
+                setMessage("A Data Final não pode ser inferior que a Data Início.");
+                setStyleMessage("container-message-error");   
+                setValorCorrigido("0,00");
+                setPercentual("0,00"); 
+
+            } else if(mesAnoInicial !== "" && mesAnoFinal !== "" && valor !== "") {
+                setStyleMessage("container-message-hidden"); 
+
+                const connection = await fetch(`https://api-ipca2.onrender.com/calcularCorrecao?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
+                    credentials: "include"
+                });
+    
+                if(connection.ok){
+                    let response = await connection.json();
+                    setValorCorrigido(new Intl.NumberFormat("pt-BR", {
+                        style: "currency",
+                        currency: "BRL"
+                    }).format(response.valorCorrigido));
+    
+                    setPercentual(response.percentualIntervalo); 
+                    setIsLoading(false);                    
+                }
+            } else{
+                setIsLoading(false);
+                setIcoMessage(icoError);
+                setMessage("Preencha todos os campos!");
+                setStyleMessage("container-message-error");   
+                setValorCorrigido("0,00");
+                setPercentual("0,00"); 
             }
 
         } catch{
             console.log("Erro ao calcular a correção.");
+            setIsLoading(false);
+            setValorCorrigido("0,00");
+            setPercentual("0,00"); 
         }
     }
 
@@ -231,28 +273,34 @@ function App() {
     }
 
     const formatMoney = (money) => {
-        let removeNaN = money.replace(/\D/g, "");
+        if(money !== ""){
+            let removeNaN = money.replace(/\D/g, "");
 
-        let floatValue = parseFloat(removeNaN) / 100;
-
-        let formatedValue = new Intl.NumberFormat('pt-BR', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        }).format(floatValue);
-
-        setValor(formatedValue);
+            let floatValue = parseFloat(removeNaN) / 100;
+    
+            let formatedValue = new Intl.NumberFormat('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(floatValue);
+    
+            setValor(formatedValue);
+        }       
     }
 
     return (
         <div className="App">
             <div className='background'></div>
+            <div className={styleMessage}>
+                <img src={icoMessage} alt=""/>
+                <p id="message">{message}</p>
+            </div>
             <div className="container-main">
                 <h1>Histórico e Cálculo do IPCA</h1>
                 <form 
                     id="form-values" 
                     onSubmit={(e) => e.preventDefault()}>
                     <div className="container-inp-mes-inicial">
-                        <label for="mes-inicial">Mês Inicial</label>
+                        <label for="mes-inicial">Mês Inicial:</label>
                         <input 
                             id="mes-inicial" 
                             name="dtInicial"
@@ -264,7 +312,7 @@ function App() {
                         />
                     </div>
                     <div className="container-inp-mes-final">
-                        <label for="mes-final">Mês Final</label>
+                        <label for="mes-final">Mês Final:</label>
                         <input 
                             id="mes-final" 
                             name="dtFinal"
@@ -276,7 +324,7 @@ function App() {
                         />
                     </div>
                     <div className="container-valor">
-                        <label for="valor">Valor na data inicial</label>
+                        <label for="valor">Valor na data inicial:</label>
                         <input 
                             id="valor" 
                             name="valor"
@@ -286,6 +334,14 @@ function App() {
                             placeholder="R$ 999,99"
                         />
                     </div>
+                    {(isLoading) ? 
+                        <img 
+                            id="ico-loading"
+                            src="/assets/loading.gif" 
+                            alt=""
+                            /> :
+                        <></>
+                    }
                     <button 
                         id="btn-submit"
                         onClick={() => calcularCorrecao()}>
@@ -320,7 +376,7 @@ function App() {
                 <table id="table-historical">
                     <caption>Histórico de Inflação</caption>
                     <thead>
-                        <tr>
+                        <tr id="trHeader">
                             <th 
                                 id="mes" 
                                 title="Ordenar por mês"

@@ -12,6 +12,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     height: 100vh;
     width: 100%;
 }
@@ -25,6 +26,45 @@
 }
 
 @media all and (min-width: 1025px){
+    .App .container-message-hidden {
+        display: none;
+    }
+    .App .container-message-error {
+        padding: 10px 0 5px 0;
+        z-index: 1;
+        color: rgb(156, 37, 37);
+        background-color: rgb(247, 155, 155);
+        /*width: calc(100vw - 18px);*/
+        width: 100%;
+        height: 60px;
+        text-align: center;
+        top: 0;
+    }
+    .App .container-message-error img {
+        width: 30px;
+        height: 30px;
+    }
+    .App .container-message-error #message {
+        background-color: #ffd2d2;
+        padding: 3px 0;
+        font-weight: 500;
+        font-size: 13px;
+    }
+    .App .container-message-success {
+        padding: 10px 0 5px 0;
+        z-index: 1;
+        color: rgb(41, 156, 37);
+        background-color: rgb(155, 247, 163);
+        width: 100vw;
+        height: 60px;
+        text-align: center;
+        top: 0;
+    }
+    .App .container-message-success img {
+        width: 30px;
+        height: 30px;
+    }
+
     .App .container-main {
         width: 80%;
         max-width: 850px;
@@ -32,6 +72,7 @@
     }
     .App .container-main h1 {
         color: #fff;
+        margin-top: 20px;
     }
     
     .App .container-main .container-dados {
@@ -112,8 +153,13 @@
         outline: none;
         border-radius: 5px;
         width: 60px;
-        height: 40px;
+        height: 35px;
     
+    }
+    .App .container-main #form-values #ico-loading {
+        width: 30px;
+        align-self: flex-end;
+        margin-right: 10px;
     }
     .App .container-main #form-values #btn-submit:hover {
         box-shadow: 2px 2px 6px rgb(121, 121, 121);
@@ -147,7 +193,7 @@
     }
     tbody {
         overflow-y: scroll;
-        max-height: 380px;
+        max-height: 330px;
     }
     table, th, td {
         border-collapse: collapse;
@@ -163,16 +209,18 @@
         max-width: calc(850px - 40px);
         border-radius: 10px;
         height: 440px;
+        max-height: calc(440px - 40px);
         margin-top: 20px;
         padding: 10px 20px 20px 20px ;
         z-index: 1;
+        margin-bottom: 20px;
     }
     
     .App .container-table #table-historical {
         width: 100%;
         margin-top: 20px;
         background-color: rgb(204, 255, 212);
-        height: calc(100% - 40px);
+        /*height: calc(100% - 100px);*/
     }
     
     .App .container-table #table-historical caption {
@@ -190,6 +238,7 @@
     
     thead {
         background-color: rgb(209, 209, 209);
+        margin-right: 17px;
     }
     thead tr #mes, .tdmes {
         width: 60%;
@@ -206,7 +255,7 @@
     }
     
     thead tr #ano, .tdano {
-        width: 149px;
+        width: 20%
     }
     #ano {
         border-right: 1px solid rgb(126, 126, 126);
@@ -219,7 +268,7 @@
     }
     
     thead tr #ipca, .tdipca {
-        width: 150px;
+        width: 200px;
     }
     #ipca {
         border-right: 1px solid rgb(126, 126, 126);
@@ -234,6 +283,45 @@
 
 
 @media all and (min-width: 768px) and (max-width: 1024px){
+    .App .container-message-hidden {
+        display: none;
+    }
+    .App .container-message-error {
+        padding: 10px 0 5px 0;
+        z-index: 1;
+        color: rgb(156, 37, 37);
+        background-color: rgb(247, 155, 155);
+        width: 100vw;
+        height: 60px;
+        text-align: center;
+        top: 0;
+    }
+    .App .container-message-error img {
+        width: 30px;
+        height: 30px;
+    }
+    .App .container-message-error #message {
+        background-color: #ffd2d2;
+        padding: 3px 0;
+        font-weight: 500;
+        font-size: 13px;
+    }
+    .App .container-message-success {
+        padding: 10px 0 5px 0;
+        z-index: 1;
+        color: rgb(41, 156, 37);
+        background-color: rgb(155, 247, 163);
+        width: 100vw;
+        height: 60px;
+        text-align: center;
+        top: 0;
+    }
+    .App .container-message-success img {
+        width: 30px;
+        height: 30px;
+    }
+
+
     .App .container-main {
         z-index: 1;
         display: flex;
@@ -330,6 +418,11 @@
         height: 32px;
     
     }
+    .App .container-main #form-values #ico-loading {
+        width: 30px;
+        align-self: flex-end;
+        margin-right: 10px;
+    }
     .App .container-main #form-values #btn-submit:hover {
         box-shadow: 2px 2px 6px rgb(121, 121, 121);
         cursor: pointer;
@@ -371,7 +464,17 @@
     }
     tbody {
         overflow-y: scroll;
-        max-height: 380px;
+        max-height: 340px;
+        -webkit-overflow-scrolling: touch;
+    }
+    tbody::-webkit-scrollbar-thumb {
+        background-color: #838383;
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+    }
+    tbody::-webkit-scrollbar {
+        width: 15px;
     }
     table, th, td {
         border-collapse: collapse;
@@ -386,6 +489,7 @@
         max-width: calc(850px - 40px);
         border-radius: 10px;
         height: 440px;
+        max-height: calc(440px - 40px);
         margin-top: 20px;
         padding: 10px 20px 20px 20px ;
         z-index: 1;
@@ -395,7 +499,7 @@
         width: 100%;
         margin-top: 20px;
         background-color: rgb(204, 255, 212);
-        height: calc(100% - 40px);
+        height: calc(100% - 60px);
     }
     
     .App .container-table #table-historical caption {
@@ -413,49 +517,105 @@
     
     thead {
         background-color: rgb(209, 209, 209);
+        margin-right: 15px;
+        display: flex;
+        width: calc(100% - 15px);
     }
-    thead tr #mes, .tdmes {
-        width: 60%;
+    thead #trHeader {
+        width: 100%;
     }
+
     #mes {
         border-left: 1px solid rgb(126, 126, 126);
         border-right: 1px solid rgb(126, 126, 126);
+        width: 60%;
     }
     #mes:hover {
         cursor: pointer;
     }
     .tdmes {
         padding-left: 10px;
+        width: 60%;
     }
     
-    thead tr #ano, .tdano {
-        width: 149px;
-    }
-    #ano {
+    thead tr #ano {
         border-right: 1px solid rgb(126, 126, 126);
+        width: 20%
     }
     #ano:hover {
         cursor: pointer;
     }
     .tdano {
         text-align: center;
+        width: 20% !important;
     }
     
-    thead tr #ipca, .tdipca {
-        width: 150px;
-    }
-    #ipca {
+    thead tr #ipca {
         border-right: 1px solid rgb(126, 126, 126);
+        width: 180px;   
     }
     #ipca:hover {
         cursor: pointer;
     }
     .tdipca {
         text-align: center;
+        width: 180px;
     }
 }
 
 @media all and (max-width: 767px){
+    .App {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-image: url("../public/assets/background4.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 100%;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .App .container-message-hidden {
+        display: none;
+    }
+    .App .container-message-error {
+        padding: 10px 0 5px 0;
+        z-index: 1;
+        color: rgb(156, 37, 37);
+        background-color: rgb(247, 155, 155);
+        width: 100vw;
+        height: 60px;
+        text-align: center;
+        top: 0;
+    }
+    .App .container-message-error img {
+        width: 30px;
+        height: 30px;
+    }
+    .App .container-message-error #message {
+        background-color: #ffd2d2;
+        padding: 3px 0;
+        font-weight: 500;
+        font-size: 13px;
+    }
+    .App .container-message-success {
+        padding: 10px 0 5px 0;
+        z-index: 1;
+        color: rgb(41, 156, 37);
+        background-color: rgb(155, 247, 163);
+        width: 100vw;
+        height: 60px;
+        text-align: center;
+        top: 0;
+    }
+    .App .container-message-success img {
+        width: 30px;
+        height: 30px;
+    }
+
     .App .container-main {
         z-index: 1;
         display: flex;
@@ -467,6 +627,7 @@
     .App .container-main h1 {
         color: #fff;
         font-size: 25px;
+        margin-top: 20px;
     }
     
     .App .container-main .container-dados {
@@ -514,7 +675,7 @@
     .App .container-main .container-dados #btn-history {
         margin-top: 20px;
         height: 40px;
-        width: 160px;
+        width: calc(100% - 30px);
         border-radius: 5px;
         border: 1px solid green;
         background-color: rgb(55, 150, 55);
@@ -564,6 +725,9 @@
         flex-direction: column;
         width: 100%;
         margin-bottom: 10px;
+    }
+    .App .container-main #form-values #ico-loading {
+        width: 30px;
     }
     .App .container-main #form-values #btn-submit {
         align-self: flex-end;
@@ -615,6 +779,17 @@
     tbody {
         overflow-y: scroll;
         max-height: 380px;
+        -webkit-overflow-scrolling: touch;
+    }
+    tbody::-webkit-scrollbar-thumb {
+        background-color: #838383;
+        border: 6px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+    }
+    tbody::-webkit-scrollbar {
+        width: 15px;
+       
     }
     table, th, td {
         border-collapse: collapse;
@@ -631,6 +806,7 @@
         height: 440px;
         margin-top: 20px;
         padding: 10px 20px 20px 20px ;
+        margin-bottom: 20px;
         z-index: 1;
     }
     
@@ -657,47 +833,59 @@
     
     thead {
         background-color: rgb(209, 209, 209);
+        padding-right: 15px;
     }
-    thead tr #mes, .tdmes {
+    /*thead tr #mes, .tdmes {
         width: 60%;
-    }
+    }*/
     #mes {
         border-left: 1px solid rgb(126, 126, 126);
         border-right: 1px solid rgb(126, 126, 126);
         font-size: 12px;
+        height: 30px;
+        width: 60%;
     }
     #mes:hover {
         cursor: pointer;
     }
     .tdmes {
         padding-left: 10px;
+        font-size: 11px;
+        width: 60%;
     }
     
-    thead tr #ano, .tdano {
-        width: 149px;
+    thead tr #ano {
+        /*width: 149px;*/
+        width: 20%;
     }
     #ano {
         border-right: 1px solid rgb(126, 126, 126);
         font-size: 12px;
+        height: 30px;
     }
     #ano:hover {
         cursor: pointer;
     }
     .tdano {
         text-align: center;
+        width: 20%;
+        font-size: 11px;
     }
     
-    thead tr #ipca, .tdipca {
-        width: 150px;
+    thead tr #ipca{
+        width: 146px;
     }
     #ipca {
         border-right: 1px solid rgb(126, 126, 126);
         font-size: 12px;
+        height: 30px;
     }
     #ipca:hover {
         cursor: pointer;
     }
     .tdipca {
         text-align: center;
+        font-size: 11px;
+        width: 154px !important; 
     }
 }

@@ -41,7 +41,7 @@ function App() {
             let mesAnoFinal = $("#mes-final").val();
             let valor = $("#valor").val();
 
-            const connection = await fetch(`https://api-ipca2.onrender.com?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
+            const connection = await fetch(`https://api-ipca2.onrender.com/calcularCorrecao?dtInicial=${mesAnoInicial}&dtFinal=${mesAnoFinal}&valor=${valor}`, {
                 credentials: "include"
             });
 

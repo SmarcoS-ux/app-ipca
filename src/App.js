@@ -68,6 +68,14 @@ function App() {
                 setValorCorrigido("0,00");
                 setPercentual("0,00"); 
 
+            } else if(mesInicio < 1 || mesInicio > 12 || mesFim < 1 || mesFim > 12){
+                setIsLoading(false);
+                setIcoMessage(icoError);
+                setMessage("Digite um Mês válido.");
+                setStyleMessage("container-message-error");   
+                setValorCorrigido("0,00");
+                setPercentual("0,00"); 
+                
             } else if(mesAnoInicial !== "" && mesAnoFinal !== "" && valor !== "") {
                 setStyleMessage("container-message-hidden"); 
 

@@ -16,7 +16,7 @@ function App() {
     const[dataFim, setDataFim] = useState("");
     const[valor, setValor] = useState();
 
-    const icoSuccess = "/assets/sucesso.png";
+    //const icoSuccess = "/assets/sucesso.png";
     const icoError = "/assets/erro.png";
     const[styleMessage, setStyleMessage] = useState("container-message-hidden");
     const[message, setMessage] = useState("");

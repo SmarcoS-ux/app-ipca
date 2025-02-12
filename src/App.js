@@ -30,6 +30,9 @@ function App() {
             const connection = await fetch("https://api-ipca2.onrender.com/historico", {
                 credentials: "include"
             });
+            /*const connection = await fetch("http://192.168.100.230:4000/historico", {
+                credentials: "include"
+            });*/
 
             if(connection.ok){
                 const response = await connection.json();

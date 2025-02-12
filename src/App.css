@@ -191,10 +191,22 @@
     thead, tbody {
         display: block;
     }
+
     tbody {
         overflow-y: scroll;
-        max-height: 330px;
+        max-height: 340px;
+        -webkit-overflow-scrolling: touch;
     }
+    tbody::-webkit-scrollbar-thumb {
+        background-color: #838383;
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+    }
+    tbody::-webkit-scrollbar {
+        width: 15px;
+    }
+
     table, th, td {
         border-collapse: collapse;
     }
@@ -462,6 +474,7 @@
     thead, tbody {
         display: block;
     }
+
     tbody {
         overflow-y: scroll;
         max-height: 340px;
@@ -476,6 +489,7 @@
     tbody::-webkit-scrollbar {
         width: 15px;
     }
+
     table, th, td {
         border-collapse: collapse;
     }
@@ -666,6 +680,11 @@
         font-weight: 600;
         font-size: 15px;
     }   
+    .App .container-main .container-dados .view-value #valor,
+    .App .container-main .container-dados .view-value #inp-percentual {
+        background-color: #ffffff !important;
+        opacity: 1;
+    }
     .App .container-main .container-dados .view-value #inp-percentual {
         width: 80px;
         margin-left: -6px;
@@ -777,21 +796,25 @@
     thead, tbody {
         display: block;
     }
+
     tbody {
+        scrollbar-width: thin;
+        margin-right: 15px;
         overflow-y: scroll;
-        max-height: 380px;
+        max-height: 340px;
         -webkit-overflow-scrolling: touch;
     }
     tbody::-webkit-scrollbar-thumb {
         background-color: #838383;
-        border: 6px solid transparent;
+        border: 4px solid transparent;
         border-radius: 8px;
         background-clip: padding-box;
     }
     tbody::-webkit-scrollbar {
         width: 15px;
-       
     }
+    
+
     table, th, td {
         border-collapse: collapse;
     }

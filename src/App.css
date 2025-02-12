@@ -801,7 +801,7 @@
         scrollbar-width: thin;
         margin-right: 15px;
         overflow-y: scroll;
-        max-height: 340px;
+        max-height: 370px;
         -webkit-overflow-scrolling: touch;
     }
     tbody::-webkit-scrollbar-thumb {
